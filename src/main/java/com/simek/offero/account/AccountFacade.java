@@ -3,18 +3,21 @@ package com.simek.offero.account;
 import com.simek.offero.account.dto.AccountDTO;
 import com.simek.offero.account.ports.incoming.AccountCreatable;
 import com.simek.offero.account.ports.incoming.AccountDeletable;
+import com.simek.offero.account.ports.incoming.AccountFindableByEmail;
 import com.simek.offero.account.ports.outgoing.AccountRepository;
 
-class AccountFacade implements AccountCreatable, AccountDeletable {
+class AccountFacade implements AccountCreatable, AccountDeletable, AccountFindableByEmail {
     private final AccountCreator accountCreator;
     private final AccountDeleter accountDeleter;
     private final AccountRepository accountRepository;
+    private final AccountFinderByEmail accountFinderByEmail;
 
 
-    public AccountFacade(AccountCreator accountCreatable, AccountDeleter accountDeletable, AccountRepository accountRepository) {
+    public AccountFacade(AccountCreator accountCreatable, AccountDeleter accountDeletable, AccountFinderByEmail accountFinderByEmail, AccountRepository accountRepository) {
         this.accountCreator = accountCreatable;
         this.accountDeleter = accountDeletable;
         this.accountRepository = accountRepository;
+        this.accountFinderByEmail = accountFinderByEmail;
     }
 
     @Override
@@ -23,7 +26,12 @@ class AccountFacade implements AccountCreatable, AccountDeletable {
     }
 
     @Override
-    public AccountDTO delete(AccountDeleteCommand accountDeleteCommand) {
-        return accountDeleter.delete(accountDeleteCommand, accountRepository);
+    public void delete(AccountDeleteCommand accountDeleteCommand) {
+        accountDeleter.delete(accountDeleteCommand, accountRepository);
+    }
+
+    @Override
+    public AccountDTO findByEmail(FindByEmailCommand findByEmailCommand) {
+        return accountFinderByEmail.findByEmail(findByEmailCommand, accountRepository);
     }
 }

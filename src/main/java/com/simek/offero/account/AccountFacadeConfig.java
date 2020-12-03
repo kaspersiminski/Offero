@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-class AccountFacadeConfig {
+public class AccountFacadeConfig {
 
     private final AccountRepository accountRepository;
 
@@ -15,10 +15,18 @@ class AccountFacadeConfig {
         this.accountRepository = accountRepository;
     }
 
+    public static AccountFacade inMemFacade() {
+        final AccountCreator accountCreatable = new AccountCreator();
+        final AccountDeleter accountDeletable = new AccountDeleter();
+        final AccountFinderByEmail accountFinderByEmail = new AccountFinderByEmail();
+        return new AccountFacade(accountCreatable, accountDeletable,accountFinderByEmail , new InMemoryAccountRepository());
+    }
+
     @Bean
     public AccountFacade configure(){
         final AccountCreator accountCreatable = new AccountCreator();
         final AccountDeleter accountDeletable = new AccountDeleter();
-        return new AccountFacade(accountCreatable, accountDeletable, accountRepository);
+        final AccountFinderByEmail accountFinderByEmail = new AccountFinderByEmail();
+        return new AccountFacade(accountCreatable, accountDeletable, accountFinderByEmail, accountRepository);
     }
 }
