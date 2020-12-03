@@ -1,17 +1,24 @@
 package com.simek.offero.account;
 
-import com.simek.offero.account.ports.incoming.AccountCreatable;
-import com.simek.offero.account.ports.incoming.AccountDeletable;
+import com.simek.offero.account.ports.outgoing.AccountRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class AccountFacadeConfig {
-    
+class AccountFacadeConfig {
+
+    private final AccountRepository accountRepository;
+
+    @Autowired
+    public AccountFacadeConfig(AccountRepository accountRepository) {
+        this.accountRepository = accountRepository;
+    }
+
     @Bean
     public AccountFacade configure(){
-        final AccountCreatable accountCreatable = new AccountCreator();
-        final AccountDeletable accountDeletable = new AccountDeleter();
-        return new AccountFacade(accountCreatable, accountDeletable);
+        final AccountCreator accountCreatable = new AccountCreator();
+        final AccountDeleter accountDeletable = new AccountDeleter();
+        return new AccountFacade(accountCreatable, accountDeletable, accountRepository);
     }
 }

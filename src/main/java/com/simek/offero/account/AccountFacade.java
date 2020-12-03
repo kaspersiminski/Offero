@@ -3,23 +3,27 @@ package com.simek.offero.account;
 import com.simek.offero.account.dto.AccountDTO;
 import com.simek.offero.account.ports.incoming.AccountCreatable;
 import com.simek.offero.account.ports.incoming.AccountDeletable;
+import com.simek.offero.account.ports.outgoing.AccountRepository;
 
-public class AccountFacade implements AccountCreatable, AccountDeletable {
-    AccountCreatable accountCreatable;
-    AccountDeletable accountDeletable;
+class AccountFacade implements AccountCreatable, AccountDeletable {
+    private final AccountCreator accountCreator;
+    private final AccountDeleter accountDeleter;
+    private final AccountRepository accountRepository;
 
-    public AccountFacade(AccountCreatable accountCreatable, AccountDeletable accountDeletable) {
-        this.accountCreatable = accountCreatable;
-        this.accountDeletable = accountDeletable;
+
+    public AccountFacade(AccountCreator accountCreatable, AccountDeleter accountDeletable, AccountRepository accountRepository) {
+        this.accountCreator = accountCreatable;
+        this.accountDeleter = accountDeletable;
+        this.accountRepository = accountRepository;
     }
 
     @Override
     public AccountDTO create(AccountCreateCommand accountCreateCommand) {
-        return accountCreatable.create(accountCreateCommand);
+        return accountCreator.create(accountCreateCommand, accountRepository);
     }
 
     @Override
     public AccountDTO delete(AccountDeleteCommand accountDeleteCommand) {
-        return accountDeletable.delete(accountDeleteCommand);
+        return accountDeleter.delete(accountDeleteCommand, accountRepository);
     }
 }
