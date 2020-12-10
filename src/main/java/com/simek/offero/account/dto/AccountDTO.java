@@ -6,7 +6,7 @@ import lombok.Getter;
 @Builder
 @Getter
 public class AccountDTO {
-    private String email;
-    private String firstName;
-    private String lastName;
+    private final String email;
+    private final String firstName;
+    private final String lastName;
 }
