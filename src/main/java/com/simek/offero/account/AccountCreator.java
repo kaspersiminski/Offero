@@ -9,7 +9,7 @@ import com.simek.offero.account.ports.outgoing.AccountRepository;
 
 class AccountCreator {
 
-    public AccountDTO create(AccountCreatable.AccountCreateCommand command, AccountRepository accountRepository) {
+    AccountDTO create(AccountCreatable.AccountCreateCommand command, AccountRepository accountRepository) {
         EmailAddress email = new EmailAddress(command.getEmail());
 
         if(accountRepository.findAccountByEmailEquals(email).isPresent()) {

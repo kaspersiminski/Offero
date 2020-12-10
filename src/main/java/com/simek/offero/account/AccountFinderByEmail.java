@@ -7,7 +7,7 @@ import com.simek.offero.account.model.EmailAddress;
 import com.simek.offero.account.ports.incoming.AccountFindableByEmail;
 import com.simek.offero.account.ports.outgoing.AccountRepository;
 
-public class AccountFinderByEmail {
+class AccountFinderByEmail {
 
     AccountDTO findByEmail(AccountFindableByEmail.FindByEmailCommand findByEmailCommand, AccountRepository accountRepository) {
         EmailAddress emailAddress = new EmailAddress(findByEmailCommand.getEmail());

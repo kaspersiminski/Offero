@@ -8,7 +8,7 @@ import com.simek.offero.account.ports.outgoing.AccountRepository;
 
 class AccountDeleter {
 
-    public void delete(AccountDeletable.AccountDeleteCommand accountDeleteCommand, AccountRepository accountRepository) {
+    void delete(AccountDeletable.AccountDeleteCommand accountDeleteCommand, AccountRepository accountRepository) {
         EmailAddress email = new EmailAddress(accountDeleteCommand.getEmail());
 
         Account account = accountRepository.findAccountByEmailEquals(email)
