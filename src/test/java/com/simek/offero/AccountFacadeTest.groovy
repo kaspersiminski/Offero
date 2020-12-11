@@ -1,9 +1,9 @@
 package com.simek.offero
 
-import com.simek.offero.account.AccountFacadeConfig
-import com.simek.offero.account.dto.AccountDTO
-import com.simek.offero.account.ports.incoming.AccountCreatable
-import com.simek.offero.account.ports.incoming.AccountFindableByEmail
+import com.simek.offero.core.account.AccountFacadeConfig
+import com.simek.offero.core.account.dto.AccountDTO
+import com.simek.offero.core.account.ports.incoming.AccountCreatable
+import com.simek.offero.core.account.ports.incoming.AccountFindableByEmail
 import spock.lang.Specification
 
 class AccountFacadeTest extends Specification {
