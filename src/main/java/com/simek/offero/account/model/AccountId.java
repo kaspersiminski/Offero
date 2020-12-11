@@ -18,7 +18,6 @@ public class AccountId implements Serializable {
     protected AccountId() {
     }
 
-    @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 }

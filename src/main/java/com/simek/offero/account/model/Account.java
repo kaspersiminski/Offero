@@ -7,7 +7,7 @@ import javax.persistence.Embedded;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 
-@Entity
+@Entity(name = "ACCOUNT")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -22,7 +22,9 @@ public class Account {
     @Column(unique = true)
     private EmailAddress email;
 
+    @Column(length = 40)
     private String firstName;
 
+    @Column(length = 40)
     private String lastName;
 }

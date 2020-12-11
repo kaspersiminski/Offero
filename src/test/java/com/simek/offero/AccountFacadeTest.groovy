@@ -13,9 +13,22 @@ class AccountFacadeTest extends Specification {
         final createCommand = new AccountCreatable.AccountCreateCommand("test@test.pl", "FirstName", "LastName")
 
         when:
-        AccountDTO result = facade.create(createCommand)
+        facade.create(createCommand)
 
         then:
         facade.findByEmail(new AccountFindableByEmail.FindByEmailCommand("test@test.pl")).email == "test@test.pl"
+    }
+
+
+    def "Should reject user with to long email"() {
+        given:
+        final facade = AccountFacadeConfig.inMemFacade()
+        final createCommand = new AccountCreatable.AccountCreateCommand("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx@test.pl", "FirstName", "LastName")
+
+        when:
+        facade.create(createCommand)
+
+        then:
+        thrown(IllegalArgumentException)
     }
 }
