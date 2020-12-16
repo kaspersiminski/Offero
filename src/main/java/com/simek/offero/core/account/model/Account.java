@@ -3,10 +3,7 @@ package com.simek.offero.core.account.model;
 import com.simek.offero.infrastructure.entity.AbstractEntity;
 import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Embedded;
-import javax.persistence.EmbeddedId;
-import javax.persistence.Entity;
+import javax.persistence.*;
 
 @Entity(name = "ACCOUNT")
 @NoArgsConstructor
@@ -17,12 +14,15 @@ import javax.persistence.Entity;
 public class Account extends AbstractEntity {
 
     @Embedded
-    @Column(unique = true)
+    @Column(unique = true, nullable = false)
     private EmailAddress email;
 
-    @Column(length = 40)
+    @Column(length = 40, nullable = false)
     private String firstName;
 
-    @Column(length = 40)
+    @Column(length = 40, nullable = false)
     private String lastName;
+
+    @Column(nullable = false)
+    private String password;
 }
