@@ -1,4 +1,4 @@
-package com.simek.offero.core.account.dto;
+package com.simek.offero.core.user.dto;
 
 import lombok.Builder;
 import lombok.Getter;

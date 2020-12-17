@@ -1,7 +1,7 @@
 package com.simek.offero.application.controlers;
 
-import com.simek.offero.core.account.exceptions.EmailAddressAlreadyUsed;
-import com.simek.offero.core.account.exceptions.EmailAddressDoesntExist;
+import com.simek.offero.core.user.exceptions.EmailAddressAlreadyUsed;
+import com.simek.offero.core.user.exceptions.EmailAddressDoesntExist;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;

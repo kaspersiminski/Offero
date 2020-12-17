@@ -1,7 +1,7 @@
 package com.simek.offero.infrastructure.security;
 
-import com.simek.offero.core.account.dto.SpringSecurityUserDTO;
-import com.simek.offero.core.account.ports.incoming.SpringSecurityUserFindableByEmail;
+import com.simek.offero.core.user.dto.SpringSecurityUserDTO;
+import com.simek.offero.core.user.ports.incoming.SpringSecurityUserFindableByEmail;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

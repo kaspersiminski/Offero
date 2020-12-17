@@ -1,0 +1,21 @@
+package com.simek.offero.core.user;
+
+import com.simek.offero.core.user.dto.UserDTO;
+import com.simek.offero.core.user.exceptions.EmailAddressDoesntExist;
+import com.simek.offero.core.user.model.User;
+import com.simek.offero.core.user.model.EmailAddress;
+import com.simek.offero.core.user.ports.incoming.UserFindableByEmail;
+import com.simek.offero.core.user.ports.outgoing.UserRepository;
+
+class UserFinderByEmail {
+
+    UserDTO findByEmail(UserFindableByEmail.FindByEmailCommand findByEmailCommand, UserRepository userRepository) {
+        EmailAddress emailAddress = new EmailAddress(findByEmailCommand.getEmail());
+
+        User user = userRepository.findUserByEmailEquals(emailAddress)
+                .orElseThrow(EmailAddressDoesntExist::new);
+
+        return UserEntityDTOConverter.toUserDTO(user);
+    }
+
+}

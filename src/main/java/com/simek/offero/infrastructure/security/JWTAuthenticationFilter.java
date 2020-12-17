@@ -3,7 +3,7 @@ package com.simek.offero.infrastructure.security;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.simek.offero.core.account.dto.SpringSecurityUserDTO;
+import com.simek.offero.core.user.dto.SpringSecurityUserDTO;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.security.authentication.AuthenticationManager;

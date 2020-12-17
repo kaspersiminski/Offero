@@ -1,6 +1,6 @@
-package com.simek.offero.core.account.ports.incoming;
+package com.simek.offero.core.user.ports.incoming;
 
-import com.simek.offero.core.account.dto.SpringSecurityUserDTO;
+import com.simek.offero.core.user.dto.SpringSecurityUserDTO;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 

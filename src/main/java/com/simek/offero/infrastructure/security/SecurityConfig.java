@@ -1,6 +1,6 @@
 package com.simek.offero.infrastructure.security;
 
-import com.simek.offero.core.account.ports.incoming.SpringSecurityUserFindableByEmail;
+import com.simek.offero.core.user.ports.incoming.SpringSecurityUserFindableByEmail;
 import com.simek.offero.infrastructure.security.properties.JWTProperties;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -33,7 +33,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.cors()
             .and()
                 .authorizeRequests()
-                    .antMatchers(HttpMethod.POST, "/account/**","/user/login/**")
+                    .antMatchers(HttpMethod.POST, "/user/register","/user/login/")
                         .permitAll()
                     .anyRequest()
                         .authenticated()

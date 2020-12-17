@@ -1,4 +1,4 @@
-package com.simek.offero.core.account.model;
+package com.simek.offero.core.user.model;
 
 import org.springframework.util.Assert;
 

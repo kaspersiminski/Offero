@@ -1,15 +1,15 @@
-package com.simek.offero.core.account.ports.incoming;
+package com.simek.offero.core.user.ports.incoming;
 
-import com.simek.offero.core.account.dto.AccountDTO;
+import com.simek.offero.core.user.dto.UserDTO;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
-public interface AccountCreatable {
-    AccountDTO create(AccountCreateCommand accountCreateCommand);
+public interface UserCreatable {
+    UserDTO create(CreateCommand createCommand);
 
     @AllArgsConstructor
     @Getter
-    class AccountCreateCommand {
+    class CreateCommand {
         private final String email;
         private final String firstName;
         private final String lastName;

@@ -1,17 +1,17 @@
-package com.simek.offero.core.account.model;
+package com.simek.offero.core.user.model;
 
 import com.simek.offero.infrastructure.entity.AbstractEntity;
 import lombok.*;
 
 import javax.persistence.*;
 
-@Entity(name = "ACCOUNT")
+@Entity(name = "USERS")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
 @Builder
-public class Account extends AbstractEntity {
+public class User extends AbstractEntity {
 
     @Embedded
     @Column(unique = true, nullable = false)
