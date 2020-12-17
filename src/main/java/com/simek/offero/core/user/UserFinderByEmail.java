@@ -9,7 +9,13 @@ import com.simek.offero.core.user.ports.outgoing.UserRepository;
 
 class UserFinderByEmail {
 
-    UserDTO findByEmail(UserFindableByEmail.FindByEmailCommand findByEmailCommand, UserRepository userRepository) {
+    private final UserRepository userRepository;
+
+    UserFinderByEmail(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
+    UserDTO findByEmail(UserFindableByEmail.FindByEmailCommand findByEmailCommand) {
         EmailAddress emailAddress = new EmailAddress(findByEmailCommand.getEmail());
 
         User user = userRepository.findUserByEmailEquals(emailAddress)

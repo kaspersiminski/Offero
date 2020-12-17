@@ -25,4 +25,20 @@ public class User extends AbstractEntity {
 
     @Column(nullable = false)
     private String password;
+
+    @Enumerated(EnumType.STRING)
+    @Column(length = 40, nullable = false)
+    private UserStatus userStatus;
+
+    @Column()
+    private ConfirmToken confirmToken;
+
+
+    public void confirmAccount() {
+        userStatus = UserStatus.APPROVED;
+    }
+
+    public void generateConfirmationToken() {
+        confirmToken = new ConfirmToken(email.getValue());
+    }
 }

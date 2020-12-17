@@ -8,7 +8,13 @@ import com.simek.offero.core.user.ports.outgoing.UserRepository;
 
 class UserDeleter {
 
-    void delete(UserDeletable.DeleteCommand deleteCommand, UserRepository userRepository) {
+    private final UserRepository userRepository;
+
+    UserDeleter(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
+    void delete(UserDeletable.DeleteCommand deleteCommand) {
         EmailAddress email = new EmailAddress(deleteCommand.getEmail());
 
         User user = userRepository.findUserByEmailEquals(email)

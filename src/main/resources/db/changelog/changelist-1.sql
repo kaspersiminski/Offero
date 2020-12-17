@@ -1,4 +1,4 @@
-CREATE TABLE USERS
+CREATE TABLE users
 (
     id        BIGSERIAL,
     email     VARCHAR (80) UNIQUE,

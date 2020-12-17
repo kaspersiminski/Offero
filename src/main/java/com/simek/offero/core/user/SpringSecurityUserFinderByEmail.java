@@ -9,7 +9,13 @@ import com.simek.offero.core.user.ports.outgoing.UserRepository;
 
 class SpringSecurityUserFinderByEmail {
 
-    SpringSecurityUserDTO findByEmail(SpringSecurityUserFindableByEmail.FindByEmailCommand findByEmailCommand, UserRepository userRepository) {
+    private final UserRepository userRepository;
+
+    SpringSecurityUserFinderByEmail(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
+    SpringSecurityUserDTO findByEmail(SpringSecurityUserFindableByEmail.FindByEmailCommand findByEmailCommand) {
         EmailAddress emailAddress = new EmailAddress(findByEmailCommand.getEmail());
 
         User user = userRepository.findUserByEmailEquals(emailAddress)
