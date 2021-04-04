@@ -23,7 +23,7 @@ public class UserFacadeConfig {
     }
 
     @Bean
-    public UserFacade configure(){
+    public UserFacade userFacadeConfigure(){
         final UserCreator userCreator = new UserCreator(userRepository, bCryptPasswordEncoder, emailService);
         final UserDeleter userDeleter = new UserDeleter(userRepository);
         final UserFinderByEmail userFinderByEmail = new UserFinderByEmail(userRepository);
@@ -32,7 +32,7 @@ public class UserFacadeConfig {
         return new UserFacade(userCreator, userDeleter, springSecurityUserFinderByEmail, userFinderByEmail, userConfirmer);
     }
 
-    public static UserFacade inMemFacade() {
+    public static UserFacade  userFacadeInMemFacade() {
         final InMemoryUserRepository userRepository = new InMemoryUserRepository();
         final BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
         final UserCreator userCreator = new UserCreator(userRepository, bCryptPasswordEncoder, new EmailServiceAdapter());
